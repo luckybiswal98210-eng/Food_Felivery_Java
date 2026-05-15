@@ -76,9 +76,7 @@ public class DataSeeder implements CommandLineRunner {
             createMenuItem(3L, "Mutton Biryani", "Rich flavorful mutton pieces", 250.00, "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=500"),
             createMenuItem(3L, "Veg Biryani", "Loaded with vegetables & paneer", 140.00, "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500"),
             createMenuItem(3L, "Egg Biryani", "Spicy rice with boiled eggs", 130.00, "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500"),
-            createMenuItem(3L, "Guntur Biryani", "Extra spicy Andhra style biryani", 170.00, "https://images.unsplash.com/photo-1626779836881-83c316715fbc?w=500"),
-            createMenuItem(3L, "Chicken Tikka Kebab", "6 pcs of smokey chicken", 160.00, "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=500"),
-            createMenuItem(3L, "Chicken 65", "Spicy deep-fried chicken", 130.00, "https://images.unsplash.com/photo-1606478961726-1b0722cc2c13?w=500"),
+            createMenuItem(3L, "Paneer Biryani", "Rich and flavorful paneer biryani", 160.00, "/images/paneer_biryani.png"),
             
             createMenuItem(4L, "Masala Dosa", "Crispy crepe with potato filling", 70.00, "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500"),
             createMenuItem(4L, "Plain Dosa", "Simple crispy crepe", 50.00, "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500"),
