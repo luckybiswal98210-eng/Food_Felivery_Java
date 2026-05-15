@@ -37,7 +37,7 @@ public class DataSeeder implements CommandLineRunner {
                 createRestaurant("South Indian", "Crispy Dosas and South Indian Delicacies", 4.6, "25-35 min", "/images/south_indian.jpg"),
                 createRestaurant("Chatpata Corner", "Flavors from the Streets", 4.3, "15-25 min", "/images/chatpata_corner.jpg"),
                 createRestaurant("Sweet Tooth", "Indian Sweets, Cakes, and Desserts", 4.8, "20-30 min", "/images/sweet_tooth.jpg"),
-                createRestaurant("Punjabi Dhaba", "Rich & Creamy North Indian Curries", 4.5, "35-45 min", "/images/punjabi_dhaba.png"),
+                createRestaurant("Punjabi Dhaba", "Rich & Creamy North Indian Curries", 4.5, "35-45 min", "/images/punjabi_dhaba_new.jpg"),
                 createRestaurant("Pasta Bar", "Italian Pastas & Garlic Breads", 4.4, "30-40 min", "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500")
         );
         restaurantRepository.saveAll(restaurants);
@@ -113,9 +113,10 @@ public class DataSeeder implements CommandLineRunner {
             createMenuItem(7L, "Butter Chicken", "Creamy tomato gravy", 180.00, "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500"),
             createMenuItem(7L, "Paneer Butter Masala", "Rich paneer gravy", 150.00, "/images/paneer_butter_masala.png"),
             createMenuItem(7L, "Dal Makhani", "Slow-cooked black lentils", 120.00, "/images/dal_makhani.png"),
-            createMenuItem(7L, "Butter Naan", "Soft tandoori bread", 35.00, "/images/butter_naan.png"),
-            createMenuItem(7L, "Jeera Rice", "Cumin flavored rice", 80.00, "/images/jeera_rice.jpg"),
-            createMenuItem(7L, "Lassi", "Chilled refreshing yogurt drink", 50.00, "/images/lassi.png"),
+            createMenuItem(7L, "Butter Naan", "Soft tandoori bread", 35.00, "/images/butter_naan_new.png"),
+            createMenuItem(7L, "Jeera Rice", "Cumin flavored rice", 80.00, "/images/jeera_rice_new.png"),
+            createMenuItem(7L, "Lassi", "Chilled refreshing yogurt drink", 50.00, "/images/lassi_new.png"),
+            createMenuItem(7L, "Chole Bhature", "Spicy chickpeas with fried bread", 110.00, "/images/chole_bhature.png"),
             
             createMenuItem(8L, "White Sauce Pasta", "Creamy Alfredo pasta", 139.00, "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=500"),
             createMenuItem(8L, "Red Sauce Pasta", "Tangy Arrabbiata pasta", 129.00, "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=500"),
