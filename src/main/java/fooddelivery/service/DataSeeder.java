@@ -79,12 +79,14 @@ public class DataSeeder implements CommandLineRunner {
             createMenuItem(3L, "Paneer Biryani", "Rich and flavorful paneer biryani", 160.00, "/images/paneer_biryani.png"),
             
             createMenuItem(4L, "Masala Dosa", "Crispy crepe with potato filling", 70.00, "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Rameshwaram_Cafe_Dosa.jpg/500px-Rameshwaram_Cafe_Dosa.jpg"),
-            createMenuItem(4L, "Plain Dosa", "Simple crispy crepe", 50.00, "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500"),
-            createMenuItem(4L, "Paneer Dosa", "Dosa stuffed with spiced paneer", 90.00, "https://images.unsplash.com/photo-1610190176378-7517c5f87b8f?w=500"),
+            createMenuItem(4L, "Plain Dosa", "Simple crispy crepe", 50.00, "/images/plain_dosa.png"),
+            createMenuItem(4L, "Paneer Dosa", "Dosa stuffed with spiced paneer", 90.00, "/images/paneer_dosa.png"),
+            createMenuItem(4L, "Chinese Dosa", "Indo-Chinese style fusion dosa", 100.00, "/images/chinese_dosa.png"),
+            createMenuItem(4L, "Pav Bhaji Dosa", "Dosa with spicy pav bhaji filling", 110.00, "/images/pav_bhaji_dosa.png"),
             createMenuItem(4L, "Idli Sambar", "Steamed rice cakes with lentil soup", 60.00, "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Idli_Sambar.JPG/500px-Idli_Sambar.JPG"),
             createMenuItem(4L, "Medu Vada", "Deep fried lentil donuts", 50.00, "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Medu_Vadas.JPG/500px-Medu_Vadas.JPG"),
             createMenuItem(4L, "Uttapam", "Thick rice pancake with onion toppings", 80.00, "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Mini_Uttappam.jpg/500px-Mini_Uttappam.jpg"),
-            createMenuItem(4L, "Lemon Rice", "Tangy lemon flavored rice", 75.00, "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500"),
+            createMenuItem(4L, "Lemon Rice", "Tangy lemon flavored rice", 75.00, "/images/lemon_rice.png"),
             createMenuItem(4L, "Upma", "Savory semolina porridge", 45.00, "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/A_photo_of_Upma.jpg/500px-A_photo_of_Upma.jpg"),
             createMenuItem(4L, "Ven Pongal", "Savory lentil and rice dish", 65.00, "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ven_pongal_with_sambar_and_chutney.jpg/500px-Ven_pongal_with_sambar_and_chutney.jpg"),
             
