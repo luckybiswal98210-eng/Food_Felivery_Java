@@ -38,7 +38,7 @@ public class DataSeeder implements CommandLineRunner {
                 createRestaurant("Chatpata Corner", "Flavors from the Streets", 4.3, "15-25 min", "/images/chatpata_corner.jpg"),
                 createRestaurant("Sweet Tooth", "Indian Sweets, Cakes, and Desserts", 4.8, "20-30 min", "/images/sweet_tooth.jpg"),
                 createRestaurant("Punjabi Dhaba", "Rich & Creamy North Indian Curries", 4.5, "35-45 min", "/images/punjabi_dhaba_new.jpg"),
-                createRestaurant("Pasta Bar", "Italian Pastas & Garlic Breads", 4.4, "30-40 min", "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500")
+                createRestaurant("Pasta Bar", "Italian Pastas & Garlic Breads", 4.4, "30-40 min", "/images/pasta_bar.jpg")
         );
         restaurantRepository.saveAll(restaurants);
     }
@@ -118,9 +118,10 @@ public class DataSeeder implements CommandLineRunner {
             createMenuItem(7L, "Lassi", "Chilled refreshing yogurt drink", 50.00, "/images/lassi_new.png"),
             createMenuItem(7L, "Chole Bhature", "Spicy chickpeas with fried bread", 110.00, "/images/chole_bhature.png"),
             
-            createMenuItem(8L, "White Sauce Pasta", "Creamy Alfredo pasta", 139.00, "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=500"),
-            createMenuItem(8L, "Red Sauce Pasta", "Tangy Arrabbiata pasta", 129.00, "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=500"),
-            createMenuItem(8L, "Pink Sauce Pasta", "Mix of red and white sauce", 149.00, "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500")
+            createMenuItem(8L, "White Sauce Pasta", "Creamy Alfredo pasta", 139.00, "/images/white_sauce_pasta.png"),
+            createMenuItem(8L, "Red Sauce Pasta", "Tangy Arrabbiata pasta", 129.00, "/images/red_sauce_pasta.png"),
+            createMenuItem(8L, "Pink Sauce Pasta", "Mix of red and white sauce", 149.00, "/images/pink_sauce_pasta.png"),
+            createMenuItem(8L, "Chicken Alfredo Pasta", "Creamy pasta with grilled chicken", 189.00, "/images/chicken_alfredo_pasta.png")
         );
         menuItemRepository.saveAll(items);
     }
