@@ -36,7 +36,7 @@ public class DataSeeder implements CommandLineRunner {
                 createRestaurant("Biryani House", "Authentic Hyderabadi & Lucknowi Biryani", 4.7, "40-50 min", "https://upload.wikimedia.org/wikipedia/commons/5/5a/%22Hyderabadi_Dum_Biryani%22.jpg"),
                 createRestaurant("South Indian", "Crispy Dosas and South Indian Delicacies", 4.6, "25-35 min", "/images/south_indian.jpg"),
                 createRestaurant("Chatpata Corner", "Flavors from the Streets", 4.3, "15-25 min", "/images/chatpata_corner.jpg"),
-                createRestaurant("Sweet Tooth", "Indian Sweets, Cakes, and Desserts", 4.8, "20-30 min", "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=500"),
+                createRestaurant("Sweet Tooth", "Indian Sweets, Cakes, and Desserts", 4.8, "20-30 min", "/images/sweet_tooth.jpg"),
                 createRestaurant("Punjabi Dhaba", "Rich & Creamy North Indian Curries", 4.5, "35-45 min", "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500"),
                 createRestaurant("Pasta Bar", "Italian Pastas & Garlic Breads", 4.4, "30-40 min", "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500")
         );
@@ -103,11 +103,12 @@ public class DataSeeder implements CommandLineRunner {
             createMenuItem(5L, "Veg Momos", "Steamed vegetable dumplings", 70.00, "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Momo_nepal.jpg/500px-Momo_nepal.jpg"),
             createMenuItem(5L, "Veg Cutlet", "Crispy vegetable patties", 40.00, "/images/veg_cutlet.png"),
             
-            createMenuItem(6L, "Gulab Jamun (2 pcs)", "Sweet syrupy dough balls", 40.00, "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=500"),
-            createMenuItem(6L, "Rasmalai (2 pcs)", "Cottage cheese in sweet milk", 60.00, "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=500"),
+            createMenuItem(6L, "Gulab Jamun", "Sweet syrupy dough balls", 40.00, "/images/gulab_jamun.png"),
+            createMenuItem(6L, "Rasmalai", "Cottage cheese in sweet milk", 60.00, "/images/rasmalai.png"),
             createMenuItem(6L, "Chocolate Brownie", "Warm fudgy brownie", 80.00, "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=500"),
-            createMenuItem(6L, "Vanilla Ice Cream", "Classic creamy scoop", 50.00, "https://images.unsplash.com/photo-1570197781417-0c7a4e63e263?w=500"),
+            createMenuItem(6L, "Vanilla Ice Cream", "Classic creamy scoop", 50.00, "/images/vanilla_icecream.png"),
             createMenuItem(6L, "Black Forest Cake", "Rich chocolate & cherry cake", 90.00, "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500"),
+            createMenuItem(6L, "Mysore Pak", "Rich & traditional sweet", 70.00, "/images/mysore_pak.png"),
             
             createMenuItem(7L, "Butter Chicken", "Creamy tomato gravy", 180.00, "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500"),
             createMenuItem(7L, "Paneer Butter Masala", "Rich paneer gravy", 150.00, "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500"),
