@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout('Welcome', ~{::content})}">
+<body>
+    <div th:fragment="content">
+        <div class="hero">
+            <h1>Welcome to <span>FoodExpress</span></h1>
+            <p>Delicious food delivered to your door in minutes. Fresh, hot, and exactly what you're craving.</p>
+            <a th:href="@{/home}" class="btn-primary">Browse Restaurants</a>
+        </div>
+        
+        <div class="grid-3" style="text-align: center; margin-top: 50px;">
+            <div class="card" style="padding: 30px;">
+                <h1 style="font-size: 3rem; margin: 0;">🛵</h1>
+                <h3>Fast Delivery</h3>
+                <p class="desc">Hot food delivered right to your doorstep under 30 minutes.</p>
+            </div>
+            <div class="card" style="padding: 30px;">
+                <h1 style="font-size: 3rem; margin: 0;">🍔</h1>
+                <h3>Top Quality</h3>
+                <p class="desc">We partner with the best restaurants in town to ensure quality.</p>
+            </div>
+            <div class="card" style="padding: 30px;">
+                <h1 style="font-size: 3rem; margin: 0;">💳</h1>
+                <h3>Easy Payments</h3>
+                <p class="desc">Seamless and secure payment options for a smooth checkout.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

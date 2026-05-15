@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout('My Profile', ~{::content})}">
+<body>
+    <div th:fragment="content">
+        <div class="auth-container" style="max-width: 600px;">
+            <h2>My Profile</h2>
+            <div style="background: var(--bg-color); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                <h3 style="margin-top: 0;" th:text="${user.name}">John Doe</h3>
+                <p style="color: #ccc; margin: 5px 0;"><strong>Email:</strong> <span th:text="${user.email}">john@example.com</span></p>
+                <p style="color: #ccc; margin: 5px 0;"><strong>Phone:</strong> <span th:text="${user.phone}">1234567890</span></p>
+            </div>
+            
+            <a th:href="@{/logout}" class="btn-secondary" style="width: 100%; text-align: center; border-color: #ff4444; color: #ff4444;">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

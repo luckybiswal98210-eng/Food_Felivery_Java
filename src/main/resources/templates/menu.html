@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(${restaurant.name}, ~{::content})}">
+<head>
+</head>
+<body>
+    <div th:fragment="content">
+        <div style="margin-bottom: 20px;">
+            <a th:href="@{/home}" class="btn-secondary">← Back to Restaurants</a>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+                <h2 th:text="${restaurant.name}" style="margin: 0 0 10px 0;">Name</h2>
+                <p th:text="${restaurant.description}">Description</p>
+            </div>
+            <div style="text-align: right;">
+                <div class="rating" th:utext="'⭐ ' + ${restaurant.rating}">⭐ 4.5</div>
+                <div style="color: #aaa; font-size: 0.9rem; margin-top: 5px;" th:text="'🕒 ' + ${restaurant.deliveryTime}">🕒 30 min</div>
+            </div>
+        </div>
+
+        <hr>
+        <h3>📋 Menu</h3>
+        
+        <div class="grid-3">
+            <div class="card" th:each="item : ${items}">
+                <img th:src="${item.imageUrl}" alt="Item Image">
+                <h3 th:text="${item.name}">Name</h3>
+                <p class="desc" th:text="${item.description}">Description</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                    <div class="price-tag" th:text="'₹' + ${#numbers.formatDecimal(item.price, 1, 'COMMA', 2, 'POINT')}">₹100.00</div>
+                    <div style="flex: 1; text-align: right; margin-left: 15px;">
+                        <form th:action="@{/cart/add}" method="post">
+                            <input type="hidden" name="itemId" th:value="${item.id}">
+                            <input type="hidden" name="restaurantId" th:value="${restaurant.id}">
+                            <button type="submit" class="btn-primary">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:if="${#lists.isEmpty(items)}">
+            <p>No menu items found.</p>
+        </div>
+    </div>
+</body>
+</html>

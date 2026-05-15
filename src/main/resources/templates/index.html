@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout('Home', ~{::content})}">
+<head>
+</head>
+<body>
+    <div th:fragment="content">
+        <h2>🏪 Popular Restaurants</h2>
+        <div class="grid">
+            <div class="card" th:each="restaurant : ${restaurants}">
+                <img th:src="${restaurant.imageUrl}" alt="Restaurant Image">
+                <h3 th:text="${restaurant.name}">Name</h3>
+                <p class="desc" th:text="${restaurant.description}">Description</p>
+                <div class="card-footer">
+                    <span class="rating" th:utext="'⭐ ' + ${restaurant.rating}">⭐ 4.5</span>
+                    <span style="color: #aaa; font-size: 0.9rem;" th:text="'🕒 ' + ${restaurant.deliveryTime}">🕒 30 min</span>
+                </div>
+                <a th:href="@{'/restaurant/' + ${restaurant.id}}" class="btn-primary">View Menu</a>
+            </div>
+        </div>
+        <div th:if="${#lists.isEmpty(restaurants)}">
+            <p>No restaurants found.</p>
+        </div>
+    </div>
+</body>
+</html>
