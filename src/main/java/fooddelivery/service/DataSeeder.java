@@ -62,11 +62,11 @@ public class DataSeeder implements CommandLineRunner {
             createMenuItem(1L, "Cheese Garlic Bread", "Loaded with mozzarella", 109.00, "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500"),
             
             createMenuItem(2L, "Veg Whopper", "Signature large veg burger", 149.00, "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500"),
-            createMenuItem(2L, "Crispy Chicken Burger", "Crunchy fried chicken patty", 99.00, "https://images.unsplash.com/photo-1615887023516-9fc62cb3ae4b?w=500"),
-            createMenuItem(2L, "Chicken Whopper", "Signature large chicken burger", 179.00, "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500"),
+            createMenuItem(2L, "Crispy Chicken Burger", "Crunchy fried chicken patty", 99.00, "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=500"),
+            createMenuItem(2L, "Chicken Whopper", "Signature large chicken burger", 179.00, "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500"),
             createMenuItem(2L, "Aloo Tikki Burger", "Classic Indian potato patty", 49.00, "https://images.unsplash.com/photo-1550547660-d9450f859349?w=500"),
             createMenuItem(2L, "Peri Peri Fries", "Spicy fries", 79.00, "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=500"),
-            createMenuItem(2L, "French Fries", "Classic salted fries", 59.00, "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=500"),
+            createMenuItem(2L, "French Fries", "Classic salted fries", 59.00, "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=500"),
             createMenuItem(2L, "Cold Coffee", "Chilled creamy coffee", 89.00, "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500"),
             
             createMenuItem(3L, "Chicken Dum Biryani", "Aromatic rice with tender chicken", 180.00, "https://upload.wikimedia.org/wikipedia/commons/5/5a/%22Hyderabadi_Dum_Biryani%22.jpg"),
