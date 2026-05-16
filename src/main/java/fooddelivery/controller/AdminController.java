@@ -38,4 +38,24 @@ public class AdminController {
         model.addAttribute("orders", orders);
         return "admin/dashboard";
     }
+
+    @org.springframework.web.bind.annotation.PostMapping("/user/update")
+    public String updateUser(@org.springframework.web.bind.annotation.ModelAttribute User user, HttpSession session, org.springframework.web.servlet.mvc.support.RedirectAttributes redirectAttributes) {
+        User admin = (User) session.getAttribute("loggedInUser");
+        if (admin == null || !"ROLE_ADMIN".equals(admin.getRole())) {
+            return "redirect:/login";
+        }
+
+        User existingUser = userRepository.findById(user.getId()).orElse(null);
+        if (existingUser != null) {
+            existingUser.setName(user.getName());
+            existingUser.setEmail(user.getEmail());
+            existingUser.setPassword(user.getPassword());
+            existingUser.setPhone(user.getPhone());
+            existingUser.setRole(user.getRole());
+            userRepository.save(existingUser);
+            redirectAttributes.addFlashAttribute("successMessage", "User updated successfully!");
+        }
+        return "redirect:/admin/dashboard";
+    }
 }

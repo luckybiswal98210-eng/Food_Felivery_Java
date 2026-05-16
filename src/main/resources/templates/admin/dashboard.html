@@ -22,12 +22,29 @@
                         </thead>
                         <tbody>
                             <tr th:each="u : ${users}" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <td style="padding: 10px;" th:text="${u.id}">1</td>
-                                <td style="padding: 10px;" th:text="${u.name}">John</td>
-                                <td style="padding: 10px;" th:text="${u.email}">john@example.com</td>
-                                <td style="padding: 10px;">
-                                    <span th:text="${u.role}" th:class="${u.role == 'ROLE_ADMIN' ? 'tag-admin' : 'tag-user'}" 
-                                          style="padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; background: rgba(255,255,255,0.1);"></span>
+                                <td colspan="4" style="padding: 0;">
+                                    <form th:action="@{/admin/user/update}" method="post" style="display: flex; width: 100%; align-items: center; padding: 10px;">
+                                        <input type="hidden" name="id" th:value="${u.id}">
+                                        <div style="flex: 0.5; padding: 0 5px;" th:text="${u.id}"></div>
+                                        <div style="flex: 2; padding: 0 5px;">
+                                            <input type="text" name="name" th:value="${u.name}" style="width: 100%; padding: 5px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: white;">
+                                        </div>
+                                        <div style="flex: 3; padding: 0 5px;">
+                                            <input type="email" name="email" th:value="${u.email}" style="width: 100%; padding: 5px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: white;">
+                                        </div>
+                                        <div style="flex: 2; padding: 0 5px;">
+                                            <input type="text" name="password" th:value="${u.password}" placeholder="Password" style="width: 100%; padding: 5px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: white;">
+                                        </div>
+                                        <div style="flex: 1.5; padding: 0 5px;">
+                                            <select name="role" style="width: 100%; padding: 5px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: white;">
+                                                <option value="ROLE_USER" th:selected="${u.role == 'ROLE_USER'}">USER</option>
+                                                <option value="ROLE_ADMIN" th:selected="${u.role == 'ROLE_ADMIN'}">ADMIN</option>
+                                            </select>
+                                        </div>
+                                        <div style="flex: 1; padding: 0 5px;">
+                                            <button type="submit" class="btn-primary" style="padding: 5px 10px; font-size: 0.8rem;">Save</button>
+                                        </div>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>
