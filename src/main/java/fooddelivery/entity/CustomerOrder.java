@@ -19,4 +19,6 @@ public class CustomerOrder {
     private Double totalAmount;
     private String status;
     private Date orderDate;
+    private String paymentMethod;
+    private String location;
 }

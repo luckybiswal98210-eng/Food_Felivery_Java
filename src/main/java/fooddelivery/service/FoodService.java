@@ -36,6 +36,8 @@ public class FoodService {
         order.setTotalAmount(totalAmount);
         order.setStatus("pending");
         order.setOrderDate(new Date());
+        order.setPaymentMethod(form.getPaymentMethod());
+        order.setLocation(form.getLocation());
 
         order = orderRepository.save(order);
 
