@@ -23,7 +23,7 @@ public class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (userRepository.count() == 0) {
+        if (userRepository.findByEmail("admin@foodexpress.com") == null) {
             User admin = new User();
             admin.setName("Admin");
             admin.setEmail("admin@foodexpress.com");
