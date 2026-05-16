@@ -31,13 +31,13 @@ public class DataSeeder implements CommandLineRunner {
 
     private void seedRestaurants() {
         List<Restaurant> restaurants = Arrays.asList(
-                createRestaurant("Pizza Paradise", "Delicious pizzas", 4.5, "30-45 min", "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500"),
+                createRestaurant("Pizza Paradise", "Delicious pizzas", 4.5, "30-45 min", "/images/pizza_paradise_new.jpg"),
                 createRestaurant("Burger King", "Flame-grilled burgers", 4.2, "20-30 min", "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500"),
                 createRestaurant("Biryani House", "Authentic Hyderabadi & Lucknowi Biryani", 4.7, "40-50 min", "https://upload.wikimedia.org/wikipedia/commons/5/5a/%22Hyderabadi_Dum_Biryani%22.jpg"),
-                createRestaurant("South Indian", "Crispy Dosas and South Indian Delicacies", 4.6, "25-35 min", "/images/south_indian.jpg"),
-                createRestaurant("Chatpata Corner", "Flavors from the Streets", 4.3, "15-25 min", "/images/chatpata_corner.jpg"),
-                createRestaurant("Sweet Tooth", "Indian Sweets, Cakes, and Desserts", 4.8, "20-30 min", "/images/sweet_tooth.jpg"),
-                createRestaurant("Punjabi Dhaba", "Rich & Creamy North Indian Curries", 4.5, "35-45 min", "/images/punjabi_dhaba_new.jpg"),
+                createRestaurant("South Indian", "Crispy Dosas and South Indian Delicacies", 4.6, "25-35 min", "/images/south_indian_new.jpg"),
+                createRestaurant("Chatpata Corner", "Flavors from the Streets", 4.3, "15-25 min", "/images/chatpata_corner_new.jpg"),
+                createRestaurant("Sweet Tooth", "Indian Sweets, Cakes, and Desserts", 4.8, "20-30 min", "/images/sweet_tooth_new.jpg"),
+                createRestaurant("Punjabi Dhaba", "Rich & Creamy North Indian Curries", 4.5, "35-45 min", "/images/punjabi_dhaba_new_2.jpg"),
                 createRestaurant("Pasta Bar", "Italian Pastas & Garlic Breads", 4.4, "30-40 min", "/images/pasta_bar.jpg")
         );
         restaurantRepository.saveAll(restaurants);
