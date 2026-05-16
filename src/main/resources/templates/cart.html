@@ -77,13 +77,13 @@
                     <div class="form-group">
                         <label>Payment Method</label>
                         <div class="payment-options" style="display: flex; gap: 15px; margin-top: 10px;">
-                            <label style="flex: 1; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);">
-                                <input type="radio" th:field="*{paymentMethod}" value="COD" required> 💵 Cash on Delivery
-                            </label>
-                            <label style="flex: 1; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);">
-                                <input type="radio" th:field="*{paymentMethod}" value="ONLINE" required> 💳 Online Payment
+                            <label style="flex: 1; padding: 15px; background: rgba(0, 200, 100, 0.1); border-radius: 10px; cursor: pointer; border: 1px solid #00c864;">
+                                <input type="radio" th:field="*{paymentMethod}" value="COD" checked required> 💵 Cash on Delivery
                             </label>
                         </div>
+                        <p style="margin-top: 10px; font-size: 0.85rem; color: #aaa; font-style: italic;">
+                            ⚠️ Note: For Cash on Delivery, payment must be approved and collected at the time of delivery.
+                        </p>
                     </div>
 
                     <input type="hidden" th:field="*{location}" id="locationInput">
