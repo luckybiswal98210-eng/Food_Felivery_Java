@@ -2,15 +2,46 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout('My Profile', ~{::content})}">
 <body>
     <div th:fragment="content">
-        <div class="auth-container" style="max-width: 600px;">
-            <h2>My Profile</h2>
-            <div style="background: var(--bg-color); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                <h3 style="margin-top: 0;" th:text="${user.name}">John Doe</h3>
-                <p style="color: #ccc; margin: 5px 0;"><strong>Email:</strong> <span th:text="${user.email}">john@example.com</span></p>
-                <p style="color: #ccc; margin: 5px 0;"><strong>Phone:</strong> <span th:text="${user.phone}">1234567890</span></p>
+        <div class="grid-2">
+            <!-- Profile Info -->
+            <div class="card" style="padding: 30px;">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h1 style="font-size: 4rem; margin: 0;">👤</h1>
+                    <h2 th:text="${user.name}">John Doe</h2>
+                    <span th:text="${user.role}" style="background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--primary-color);">ROLE_USER</span>
+                </div>
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+                <div class="profile-details">
+                    <p><strong>📧 Email:</strong> <span th:text="${user.email}">john@example.com</span></p>
+                    <p><strong>📞 Phone:</strong> <span th:text="${user.phone}">Not provided</span></p>
+                    <p><strong>📍 Address:</strong> <span th:text="${user.address}">Not provided</span></p>
+                </div>
+                <div style="margin-top: 30px;">
+                    <a th:href="@{/logout}" class="btn-secondary" style="width: 100%; text-align: center; border-color: #ff4444; color: #ff4444;">Logout</a>
+                </div>
             </div>
-            
-            <a th:href="@{/logout}" class="btn-secondary" style="width: 100%; text-align: center; border-color: #ff4444; color: #ff4444;">Logout</a>
+
+            <!-- Order History -->
+            <div class="card" style="padding: 30px;">
+                <h3>🛍️ Order History</h3>
+                <div th:if="${#lists.isEmpty(orders)}" style="padding: 40px; text-align: center; color: #666;">
+                    <p>You haven't placed any orders yet.</p>
+                    <a th:href="@{/home}" class="btn-primary" style="margin-top: 20px;">Order Food Now</a>
+                </div>
+                <div th:if="${not #lists.isEmpty(orders)}" class="order-list">
+                    <div th:each="order : ${orders}" style="padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <strong th:text="'Order #' + ${order.orderUuid.substring(0,8)}">#12345</strong>
+                            <span th:text="${#dates.format(order.orderDate, 'dd MMM yyyy')}" style="font-size: 0.8rem; color: #888;">Date</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span th:text="'₹' + ${order.totalAmount}" class="price-tag">₹0</span>
+                            <span th:text="${order.status}" style="color: #00c864; font-size: 0.9rem;">Pending</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 8px;">📍 <span th:text="${order.deliveryAddress}">Address</span></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

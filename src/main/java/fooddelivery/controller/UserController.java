@@ -12,9 +12,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserController {
     
     private final UserRepository userRepository;
+    private final fooddelivery.repository.CustomerOrderRepository orderRepository;
 
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, fooddelivery.repository.CustomerOrderRepository orderRepository) {
         this.userRepository = userRepository;
+        this.orderRepository = orderRepository;
     }
 
     @GetMapping("/login")
@@ -58,6 +60,10 @@ public class UserController {
             return "redirect:/login";
         }
         model.addAttribute("user", user);
+        
+        List<fooddelivery.entity.CustomerOrder> orders = orderRepository.findByCustomerEmail(user.getEmail());
+        model.addAttribute("orders", orders);
+        
         return "profile";
     }
 

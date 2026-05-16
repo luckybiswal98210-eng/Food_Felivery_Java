@@ -21,6 +21,7 @@ public class DataSeeder implements CommandLineRunner {
         this.menuItemRepository = menuItemRepository;
     }
 
+    @Override
     public void run(String... args) throws Exception {
         if (userRepository.count() == 0) {
             User admin = new User();
