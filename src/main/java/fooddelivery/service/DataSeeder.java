@@ -4,6 +4,8 @@ import fooddelivery.entity.MenuItem;
 import fooddelivery.entity.Restaurant;
 import fooddelivery.repository.MenuItemRepository;
 import fooddelivery.repository.RestaurantRepository;
+import fooddelivery.repository.UserRepository;
+import fooddelivery.entity.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +17,12 @@ public class DataSeeder implements CommandLineRunner {
 
     private final RestaurantRepository restaurantRepository;
     private final MenuItemRepository menuItemRepository;
+    private final UserRepository userRepository;
 
-    public DataSeeder(RestaurantRepository restaurantRepository, MenuItemRepository menuItemRepository) {
+    public DataSeeder(RestaurantRepository restaurantRepository, MenuItemRepository menuItemRepository, UserRepository userRepository) {
         this.restaurantRepository = restaurantRepository;
         this.menuItemRepository = menuItemRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
