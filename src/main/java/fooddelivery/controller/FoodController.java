@@ -84,6 +84,10 @@ public class FoodController {
 
     @PostMapping("/cart/add")
     public String addToCart(@RequestParam Long itemId, @RequestParam Long restaurantId, HttpSession session, RedirectAttributes redirectAttributes) {
+        if (session.getAttribute("loggedInUser") == null) {
+            redirectAttributes.addFlashAttribute("error", "Please login to add items to your cart.");
+            return "redirect:/login";
+        }
         MenuItem item = menuItemRepository.findById(itemId).orElse(null);
         if (item != null) {
             Map<Long, CartItem> cart = getCart(session);
@@ -98,12 +102,21 @@ public class FoodController {
     }
 
     @GetMapping("/cart")
-    public String viewCart(Model model, HttpSession session) {
+    public String viewCart(Model model, HttpSession session, RedirectAttributes redirectAttributes) {
+        fooddelivery.entity.User user = (fooddelivery.entity.User) session.getAttribute("loggedInUser");
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("error", "Please login to view your cart.");
+            return "redirect:/login";
+        }
         Map<Long, CartItem> cart = getCart(session);
         double total = cart.values().stream().mapToDouble(c -> c.getItem().getPrice() * c.getQuantity()).sum();
         model.addAttribute("cartItems", cart.values());
         model.addAttribute("total", total);
-        model.addAttribute("checkoutForm", new CheckoutForm());
+        
+        CheckoutForm form = new CheckoutForm();
+        form.setName(user.getName());
+        form.setEmail(user.getEmail());
+        model.addAttribute("checkoutForm", form);
         return "cart";
     }
 
@@ -122,6 +135,9 @@ public class FoodController {
 
     @PostMapping("/checkout")
     public String checkout(@ModelAttribute CheckoutForm form, HttpSession session, RedirectAttributes redirectAttributes) {
+        if (session.getAttribute("loggedInUser") == null) {
+            return "redirect:/login";
+        }
         Map<Long, CartItem> cart = getCart(session);
         if (cart.isEmpty()) {
             return "redirect:/cart";
@@ -133,6 +149,7 @@ public class FoodController {
             String orderId = foodService.placeOrder(form, cart, total);
             session.removeAttribute("cart");
             redirectAttributes.addFlashAttribute("orderSuccess", orderId);
+            redirectAttributes.addFlashAttribute("orderSummary", form); // For notification simulation
             return "redirect:/cart";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error placing order: " + e.getMessage());

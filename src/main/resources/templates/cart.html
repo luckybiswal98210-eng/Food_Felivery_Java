@@ -6,14 +6,24 @@
     <div th:fragment="content">
         <h2>🛒 Your Cart</h2>
 
-        <div th:if="${orderSuccess}" class="success-msg">
-            🎉 Order placed successfully! Order ID: <span th:text="${orderSuccess}"></span><br>
-            Your order will be delivered soon!
+        <div th:if="${orderSuccess}" class="success-msg" style="padding: 30px; text-align: center; background: rgba(0, 200, 100, 0.1); border: 1px solid #00c864;">
+            <h1 style="font-size: 3rem; margin-bottom: 10px;">🎉</h1>
+            <h2 style="color: #00c864;">Order Placed Successfully!</h2>
+            <p>Order ID: <strong th:text="${orderSuccess}"></strong></p>
+            <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px;">
+                <p>🚀 Estimated Delivery: <strong th:text="${#numbers.formatInteger(25 + #numbers.formatInteger(T(java.lang.Math).random() * 15, 0), 0)} + ' Minutes'">30 Minutes</strong></p>
+                <p>📍 Location: <span th:text="${orderSummary.location != null ? 'Captured' : 'Not provided'}"></span></p>
+            </div>
+            <div class="notification-box" style="margin-top: 20px; font-size: 0.9rem; color: #aaa;">
+                <p>📱 SMS sent to <span th:text="${orderSummary.phone}"></span></p>
+                <p>💬 WhatsApp confirmation sent to <span th:text="${orderSummary.phone}"></span></p>
+            </div>
+            <a th:href="@{/home}" class="btn-primary" style="margin-top: 20px; display: inline-block;">Order More Food</a>
         </div>
 
         <div th:if="${#lists.isEmpty(cartItems) and orderSuccess == null}">
             <p style="padding: 15px; background: rgba(0, 150, 255, 0.1); color: #66b3ff; border-radius: 5px;">Your cart is empty</p>
-            <a th:href="@{/}" class="btn-secondary" style="margin-top: 10px;">← Back to Restaurants</a>
+            <a th:href="@{/home}" class="btn-secondary" style="margin-top: 10px;">← Back to Restaurants</a>
         </div>
 
         <div th:if="${not #lists.isEmpty(cartItems)}">
@@ -40,28 +50,73 @@
             
             <h3 style="margin-top: 20px;">Total: <span class="price-tag" th:text="'₹' + ${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')}">₹0.00</span></h3>
 
-            <hr>
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
 
-            <h3>📝 Delivery Information</h3>
-            <form th:action="@{/checkout}" method="post" th:object="${checkoutForm}">
-                <div class="form-group">
-                    <input type="text" th:field="*{name}" placeholder="Full Name*" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" th:field="*{email}" placeholder="Email*" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" th:field="*{phone}" placeholder="Phone*" required>
-                </div>
-                <div class="form-group">
-                    <textarea th:field="*{address}" placeholder="Delivery Address*" rows="3" required></textarea>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn-primary">Place Order 🚀</button>
-                    <a th:href="@{/}" class="btn-secondary" style="text-align: center;">← Back to Menu</a>
-                </div>
-            </form>
+            <div class="checkout-section">
+                <h3>📝 Checkout Details</h3>
+                <form th:action="@{/checkout}" method="post" th:object="${checkoutForm}" id="checkoutForm">
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" th:field="*{name}" placeholder="Full Name*" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" th:field="*{email}" placeholder="Email*" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" th:field="*{phone}" placeholder="Phone Number*" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <textarea th:field="*{address}" placeholder="Detailed Delivery Address*" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <div class="payment-options" style="display: flex; gap: 15px; margin-top: 10px;">
+                            <label style="flex: 1; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);">
+                                <input type="radio" th:field="*{paymentMethod}" value="COD" required> 💵 Cash on Delivery
+                            </label>
+                            <label style="flex: 1; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);">
+                                <input type="radio" th:field="*{paymentMethod}" value="ONLINE" required> 💳 Online Payment
+                            </label>
+                        </div>
+                    </div>
+
+                    <input type="hidden" th:field="*{location}" id="locationInput">
+
+                    <div class="form-actions" style="margin-top: 30px;">
+                        <button type="button" onclick="placeOrderWithLocation()" class="btn-primary" style="width: 100%; padding: 20px; font-size: 1.2rem;">Place Order 🚀</button>
+                    </div>
+                </form>
+            </div>
         </div>
+
+        <script>
+            function placeOrderWithLocation() {
+                const form = document.getElementById('checkoutForm');
+                const locationInput = document.getElementById('locationInput');
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            locationInput.value = `${position.coords.latitude},${position.coords.longitude}`;
+                            form.submit();
+                        },
+                        (error) => {
+                            console.warn("Location access denied or failed", error);
+                            // Submit without location if denied
+                            form.submit();
+                        }
+                    );
+                } else {
+                    form.submit();
+                }
+            }
+        </script>
     </div>
 </body>
 </html>

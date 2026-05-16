@@ -8,4 +8,6 @@ public class CheckoutForm {
     private String email;
     private String phone;
     private String address;
+    private String paymentMethod;
+    private String location;
 }
