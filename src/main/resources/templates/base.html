@@ -9,24 +9,24 @@
 <body>
     <div class="container">
         <header>
-            <div style="flex: 3">
+            <div style="flex: 1">
                 <h1><a th:href="@{/home}">🍕 FoodExpress</a></h1>
             </div>
-            <div class="search-bar" style="flex: 2">
+            <div class="search-bar" style="flex: 4; margin-right: 40px;">
                 <form method="get">
                     <input type="text" name="search" placeholder="🔍 Search restaurants or food..." th:value="${searchTerm}">
                 </form>
             </div>
-            <div style="flex: 2; text-align: right;">
-                <span th:if="${session.loggedInUser == null}">
-                    <a th:href="@{/login}" class="btn-secondary" style="margin-right: 10px;">Login</a>
-                    <a th:href="@{/signup}" class="btn-primary" style="width: auto; margin-right: 10px;">Sign Up</a>
+            <div class="nav-actions" style="flex: 2; display: flex; align-items: center; justify-content: flex-end; gap: 15px;">
+                <span th:if="${session.loggedInUser == null}" style="display: flex; gap: 10px;">
+                    <a th:href="@{/login}" class="btn-secondary">Login</a>
+                    <a th:href="@{/signup}" class="btn-primary" style="width: auto;">Sign Up</a>
                 </span>
-                <span th:if="${session.loggedInUser != null}">
-                    <a th:if="${session.loggedInUser.role == 'ROLE_ADMIN'}" th:href="@{/admin/dashboard}" class="btn-primary" style="width: auto; margin-right: 10px; background: #6c5ce7;">Admin Dashboard</a>
-                    <a th:href="@{/profile}" class="btn-secondary" style="margin-right: 10px;">Profile</a>
+                <span th:if="${session.loggedInUser != null}" style="display: flex; gap: 10px; align-items: center;">
+                    <a th:if="${session.loggedInUser.role == 'ROLE_ADMIN'}" th:href="@{/admin/dashboard}" class="btn-primary" style="width: auto; background: #6c5ce7; border-color: #6c5ce7; padding: 8px 15px; white-space: nowrap;">Admin Dashboard</a>
+                    <a th:href="@{/profile}" class="btn-secondary" style="padding: 8px 15px;">Profile</a>
                 </span>
-                <a th:href="@{/cart}" class="cart-btn">🛒 Cart (<span th:text="${cartCount}">0</span>)</a>
+                <a th:href="@{/cart}" class="cart-btn" style="padding: 8px 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-decoration: none; color: white; white-space: nowrap;">🛒 Cart (<span th:text="${cartCount}">0</span>)</a>
             </div>
         </header>
 
