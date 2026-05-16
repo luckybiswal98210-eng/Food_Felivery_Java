@@ -116,6 +116,8 @@ public class FoodController {
         CheckoutForm form = new CheckoutForm();
         form.setName(user.getName());
         form.setEmail(user.getEmail());
+        form.setPhone(user.getPhone());
+        form.setAddress(user.getAddress());
         model.addAttribute("checkoutForm", form);
         return "cart";
     }
