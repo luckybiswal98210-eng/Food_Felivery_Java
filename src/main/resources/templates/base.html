@@ -23,6 +23,7 @@
                     <a th:href="@{/signup}" class="btn-primary" style="width: auto; margin-right: 10px;">Sign Up</a>
                 </span>
                 <span th:if="${session.loggedInUser != null}">
+                    <a th:if="${session.loggedInUser.role == 'ROLE_ADMIN'}" th:href="@{/admin/dashboard}" class="btn-primary" style="width: auto; margin-right: 10px; background: #6c5ce7;">Admin</a>
                     <a th:href="@{/profile}" class="btn-secondary" style="margin-right: 10px;">Profile</a>
                 </span>
                 <a th:href="@{/cart}" class="cart-btn">🛒 Cart (<span th:text="${cartCount}">0</span>)</a>

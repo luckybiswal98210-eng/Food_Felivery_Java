@@ -45,6 +45,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("error", "Email already registered");
             return "redirect:/signup";
         }
+        user.setRole("ROLE_USER");
         userRepository.save(user);
         session.setAttribute("loggedInUser", user);
         return "redirect:/home";
